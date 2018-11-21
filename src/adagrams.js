@@ -40,75 +40,56 @@ const Adagrams = {
     const inputArray = input.toUpperCase().split("");
     let letterObj = {};
 
-    // // /**** CHECKS FOR REFACTOR  *******/
-    // console.log('Played' + inputArray);
-    // console.log('Hand' + lettersInHand);
+    lettersInHand.forEach( (char) => {
+      console.log(`Array: ${lettersInHand}`);
+      console.log(`Char: ${char}`);
+      letterObj[char] ? letterObj[char] += 1 : letterObj[char] = 1;
 
-    // // /**** TO REFACTOR WITH FOREACH  *******/
-    // lettersInHand.forEach( char => {
-    //   letterObj.char ? letterObj.char + 1 : letterObj.char = 1;
-    //       console.log(`${letterObj.char}`);
-    // });
+    });
 
-    for (let letter of lettersInHand){
-      // letterObj[letter] ? letterObj[letter] + 1 : letterObj[letter] = 1;
-      //     console.log(`${letterObj[letter]}`);
-      if (letterObj[letter]) {
-        letterObj[letter] += 1;
+    // for (let letter of lettersInHand){
+    //   if (letterObj[letter]) {
+    //     letterObj[letter] += 1;
+    //   }
+    //   else {
+    //     letterObj[letter] = 1;
+    //   }
+    // }
 
-        // // /**** CHECKS FOR REFACTOR  *******/
-        // console.log(`${letterObj[letter]}`);
+    let bool = true;
+
+    inputArray.forEach( elem => {
+
+      if (bool === false) {
+        return false;
+      }
+
+      if(letterObj[elem] < 1) {
+        bool = false;
+        // return false;
+      }
+      else if (letterObj[elem] >= 1) {
+        letterObj[elem] -=1;
       }
       else {
-        letterObj[letter] = 1;
-
-        // // /**** CHECKS FOR REFACTOR  *******/
-        // console.log(`${letterObj[letter]}`);
+        bool = false;
+        // return false;
       }
-    }
+    });
+    return bool;
 
-    //*** DO THIS WITH REDUCE ****/
-
-    // /**** CHECKS FOR REFACTOR  *******/
-    //     console.log('Temp Hash: ' + `${letterObj}`);
-    //     console.log('Keys' + Object.keys(letterObj));
-    //     console.log('Original Hand: ' + `${lettersInHand}`);
-
-    // // /**** TO REFACTOR WITH FOREACH  *******/
-    // inputArray.forEach( elem => {
-    //
+    // for (let elem of inputArray) {
     //   if(letterObj[elem] < 1) {
-    //     console.log('repeat')
-    //     console.log(elem)
-    //     console.log(letterObj[elem])
     //     return false;
     //   }
     //   else if (letterObj[elem] >= 1) {
-    //     letterObj[elem] -=1;
+    //     letterObj[elem] -= 1;
     //   }
     //   else {
-    //       console.log('not there')
-    //     console.log(elem)
-    //     console.log(letterObj[elem])
     //     return false;
     //   }
-    // });
+    // }
     // return true;
-
-
-    for (let elem of inputArray) {
-      if(letterObj[elem] < 1) {
-        return false;
-      }
-      else if (letterObj[elem] >= 1) {
-        letterObj[elem] -= 1;
-      }
-      else {
-        return false;
-      }
-    }
-
-    return true;
   },
   scoreWord(input){
 
