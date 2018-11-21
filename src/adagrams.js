@@ -41,8 +41,6 @@ const Adagrams = {
     let letterObj = {};
 
     lettersInHand.forEach( (char) => {
-      console.log(`Array: ${lettersInHand}`);
-      console.log(`Char: ${char}`);
       letterObj[char] ? letterObj[char] += 1 : letterObj[char] = 1;
 
     });
@@ -121,18 +119,6 @@ const Adagrams = {
       "Q": 10,
       "Z": 10
     };
-
-    // total_score = 0
-    //
-    // letters = input.upcase.split('')
-    //
-    // letters.each do |letter|
-    // total_score += letter_scores[letter]
-    // end
-    //
-    // total_score += letters.length > 6 ? 8 : 0
-    //
-    // total_score
 
     let totalScore= 0;
     const letters = input.toUpperCase().split('');
